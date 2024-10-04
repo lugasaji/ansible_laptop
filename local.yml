@@ -16,7 +16,4 @@
       - name: Add repository ULauncher -> ppa:agornostal/ulauncher
         apt_repository:
           repo: ppa:agornostal/ulauncher
-          codename: trusty
-      - name: Install ULauncher Package
-        package:
-          name: ulauncher
+          state: absent
