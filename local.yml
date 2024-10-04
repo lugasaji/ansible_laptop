@@ -6,4 +6,10 @@
   tasks:
   - name: Install packages
     package:
-      name: htop
+     name:
+      - htop
+      - terminator
+      - virtualbox
+      - vim-nox
+      - tmux
+
