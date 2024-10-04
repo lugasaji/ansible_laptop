@@ -9,7 +9,6 @@
      name:
       - htop
       - terminator
-      - virtualbox
       - vim-nox
       - tmux
 
