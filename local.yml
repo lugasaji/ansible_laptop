@@ -11,4 +11,14 @@
       - terminator
       - vim-nox
       - tmux
+  - name: Add repositories
+    block:
+      - name: Universe
+        apt_repository:
+          repo: universe
+          state: present
+      - name: ULauncher -> ppa:agornostal/ulauncher
+        apt_repository:
+          repo: ppa:agornostal/ulauncher
+          codename: trusty
 
