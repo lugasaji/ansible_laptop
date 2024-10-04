@@ -11,10 +11,12 @@
       - terminator
       - vim-nox
       - tmux
-  - name: Add repositories
+  - name: Install ULauncher Process
     block:
-      - name: ULauncher -> ppa:agornostal/ulauncher
+      - name: Add repository ULauncher -> ppa:agornostal/ulauncher
         apt_repository:
           repo: ppa:agornostal/ulauncher
           codename: trusty
-
+      - name: Install ULauncher Package
+        package:
+          name: ulauncher
