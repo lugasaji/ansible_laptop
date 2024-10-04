@@ -6,4 +6,4 @@
   tasks:
   - name: Install packages
     package:
-	name: htop
+      name: htop
