@@ -11,17 +11,18 @@
       - terminator
       - vim-nox
       - tmux
-  - name: Install ULauncher Process
+  - name: Install Albert Launcher
     block:
-      - name: Add GPG key
-        apt_key:
-          keyserver: keyserver.ubuntu.com
-          id: 0xfaf1020699503176
-          keyring: /usr/share/keyrings/ulauncher-archive-keyring.gpg
-
-      - name: Add repository ULauncher -> ppa:agornostal/ulauncher
-        apt_repository:
-          repo: "deb [signed-by=/usr/share/keyrings/ulauncher-archive-keyring.gpg] http://ppa.launchpad.net/agornostal/ulauncher/ubuntu jammy main"
+      - name: Add repository ManuelSchneid3r
+        deb822_repository:
+          name: "home_manuelschneid3r"
+          types: [deb]
+          uris: "http://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_12/"
+          signed_by: "https://download.opensuse.org/repositories/home:manuelschneid3r/Debian_12/Release.key"
+          suites: [/]
           state: present
-          filename: ulauncher-jammy
-          update_cache: yes
+          enabled: yes
+      - name: Install Albert from repository
+        package:
+          name: albert
+
