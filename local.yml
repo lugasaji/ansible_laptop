@@ -11,10 +11,12 @@
       - terminator
       - vim-nox
       - tmux
+  
   - name: Install Albert Launcher
     block:
+      
       - name: Add repository ManuelSchneid3r
-        deb822_repository:
+        deb822_repository:        
           name: "home_manuelschneid3r"
           types: [deb]
           uris: "http://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_12/"
@@ -22,6 +24,11 @@
           suites: [/]
           state: present
           enabled: yes
+      
+      - name: Update repositories
+        apt:
+          update_cache: yes
+      
       - name: Install Albert from repository
         package:
           name: albert
