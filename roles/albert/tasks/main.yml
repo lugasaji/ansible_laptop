@@ -1,0 +1,19 @@
+---
+- name: Add repository ManuelSchneid3r
+  deb822_repository:
+    name: "{{ repository_name }}"
+    types: [deb]
+    uris: "{{ repository_url }}"
+    signed_by: "{{ repository_key }}"
+    suites: [/]
+    state: present
+    enabled: yes
+
+- name: Update repositories
+  apt:
+    update_cache: yes
+
+- name: Install Albert from repository
+  package:
+    name: albert
+

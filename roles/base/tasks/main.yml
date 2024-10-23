@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  package:
+      name:
+        - htop
+        - terminator
+        - vim-nox
+        - tmux
+        - python3-pip
+        - python3-venv

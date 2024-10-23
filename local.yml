@@ -2,34 +2,10 @@
 - hosts: localhost
   connection: local
   become: true
-
-  tasks:
-  - name: Install packages
-    package:
-     name:
-      - htop
-      - terminator
-      - vim-nox
-      - tmux
-  
-  - name: Install Albert Launcher
-    block:
-      
-      - name: Add repository ManuelSchneid3r
-        deb822_repository:        
-          name: "home_manuelschneid3r"
-          types: [deb]
-          uris: "http://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_12/"
-          signed_by: "https://download.opensuse.org/repositories/home:manuelschneid3r/Debian_12/Release.key"
-          suites: [/]
-          state: present
-          enabled: yes
-      
-      - name: Update repositories
-        apt:
-          update_cache: yes
-      
-      - name: Install Albert from repository
-        package:
-          name: albert
-
+  roles:
+    - base
+    - albert
+    - role: keyboard-configuration
+      keyboard_model: pc105
+      keyboard_layout: es
+      keyboard_variant: dvorak
