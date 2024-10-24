@@ -9,8 +9,9 @@ $ sudo apt install python3 python3-pip
 
 ```
 
-2. Install the latest ansible version
+2. Install the latest ansible version. [Official page](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-debian) 
 
+For debian 12:
 
 ```bash
 $ UBUNTU_CODENAME=jammy
