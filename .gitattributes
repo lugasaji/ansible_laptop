@@ -1,2 +1,2 @@
 * linguist-vendored
-*.yml linguist-detectable=true
+*.yml linguist-vendored=false
