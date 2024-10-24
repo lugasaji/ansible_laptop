@@ -9,3 +9,4 @@
       keyboard_model: pc105
       keyboard_layout: es
       keyboard_variant: dvorak
+    - nvim

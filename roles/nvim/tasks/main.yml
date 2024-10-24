@@ -1,0 +1,35 @@
+---
+- name: Install Neovim
+  get_url:
+    url: "{{ nvim_url }}"
+    dest: "{{ nvim_destination }}"
+    mode: '0755'
+
+- name: Install neovim plugin dependencies
+  package:
+    name:
+      - ripgrep
+      - xclip
+
+- name: Remove old neovim configurations
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    "{{ nvim_configuration_directories }}"
+
+- name: Install neovim starter kit for python
+  block:
+    - name: Clone neovim repository
+      git:
+        repo: https://github.com/bcampolo/nvim-starter-kit.git 
+        dest: /tmp/nvim-starter-kit 
+        single_branch: yes
+        version: python
+    - name: Copy .config/nvim/ to ~/.config/nvim/
+      copy:
+        src: /tmp/nvim-starter-kit/.config/
+        dest: "{{ nvim_configuration_directory }}"
+        group: "{{ group }}"
+        owner: "{{ user }}"
+        mode: '0755'

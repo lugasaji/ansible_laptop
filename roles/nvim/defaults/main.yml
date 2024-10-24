@@ -1,0 +1,12 @@
+---
+nvim_url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+
+nvim_destination: /usr/local/bin/nvim
+
+nvim_configuration_directory: "{{ home }}/.config/"
+
+nvim_configuration_directories:
+  - "{{ home }}/.config/nvim"
+  - "{{ home }}/.local/share/nvim"
+  - "{{ home }}/.local/state/nvim" 
+  - "{{ home }}/.cache/nvim" 

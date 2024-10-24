@@ -1,0 +1,20 @@
+---
+- name: Download Node script
+  get_url:
+    url: https://deb.nodesource.com/setup_20.x
+    dest: /tmp/nodesource_setup.sh 
+    mode: '0755'
+
+- name: Execute script nodesource_setup.sh 
+  shell: /tmp/nodesource_setup.sh
+  args:
+    executable: /bin/bash
+
+- name: Update repositories
+  apt:
+    update_cache: yes
+
+- name: Install nodejs
+  package:
+    name: nodejs
+    state: present
