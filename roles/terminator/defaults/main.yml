@@ -1,0 +1,4 @@
+---
+terminator_font: InconsolataGo Nerd Font Mono 12 
+terminator_path_config: "{{ home }}/.config/terminator"
+bg_terminator_path: "{{ terminator_path_config }}/bg/bg.jpg"

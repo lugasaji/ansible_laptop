@@ -9,4 +9,7 @@
       keyboard_model: pc105
       keyboard_layout: es
       keyboard_variant: dvorak
-    - nvim
+      #   - nvim
+      #- custom_bash
+      #- terminator
+    - keyboard_shortcuts

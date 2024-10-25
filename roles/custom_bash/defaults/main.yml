@@ -1,0 +1,8 @@
+---
+nerd_font_url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/InconsolataGo.zip
+font_path: "{{ home }}/.fonts"
+starship_url: https://starship.rs/install.sh
+tmp_starship_script_path: /tmp/starship-installer.sh
+zoxide_url: https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
+tmp_zoxide_script_path: /tmp/zoxide-installer.sh
+conf_path: "{{ home }}/.config" 

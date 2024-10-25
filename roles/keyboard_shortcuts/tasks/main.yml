@@ -1,0 +1,17 @@
+---
+- name: Install xbindkeys
+  package:
+    name: xbindkeys
+
+- name: Copy configuration file
+  template:
+    src: .xbindkeysrc.j2
+    dest: "{{ home }}/.xbindkeysrc"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: "0644"
+
+- name: Apply changes
+  shell:
+    cmd: xbindkeys -p
+  become_user: "{{ user }}"

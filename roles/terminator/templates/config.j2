@@ -1,0 +1,29 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 1.0
+    background_image = 
+    font = {{  terminator_font }}
+    foreground_color = "#839496"
+    use_system_font = False
+  [[{{ user }}]]
+    background_color = "#342425"
+    background_darkness = 0.6
+    background_type = image
+    background_image = {{ bg_terminator_path}}
+    font = {{ terminator_font }}
+    foreground_color = "#ffffff"
+    palette = "#616161:#ff8272:#b4fa72:#fefdc2:#a5d5fe:#ff8ffd:#d0d1fe:#f1f1f1:#8e8e8e:#ffc4bd:#d6fcb9:#fefdd5:#c1e3fe:#ffb1fe:#e5e6fe:#feffff"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

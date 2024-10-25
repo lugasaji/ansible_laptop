@@ -1,0 +1,82 @@
+---
+- name: install dependencies
+  package:
+    name:
+      - fzf
+      - multitail
+      - tree
+      - trash-cli
+      - bash-completion
+
+- name: Create font directory
+  file:
+    path: "{{ font_path }}"
+    state: directory
+    group: "{{ group }}"
+    owner: "{{ user }}"
+    mode: '0755'
+
+- name: Download Nerd Font
+  unarchive:
+    src: "{{ nerd_font_url }}"
+    dest: "{{ font_path }}"
+    remote_src: yes
+
+- name: Installing Nerd font_path
+  shell:
+    cmd: fc-cache
+    chdir: "{{ font_path }}"
+
+- name: Install zoxide
+  block:
+    
+    - name: Download Zoxide Installer
+      get_url:
+        url: "{{ zoxide_url }}"
+        dest: "{{ tmp_zoxide_script_path }}"
+        mode: '0755'
+        group: "{{ group }}"
+        owner: "{{ user }}"
+
+    - name: Run de zoxide installer 
+      script: "{{ tmp_zoxide_script_path }}"
+      become: yes
+      become_user: "{{ user }}"
+
+    - name: Remove installer 
+      file:
+        path: "{{ tmp_zoxide_script_path }}"
+        state: absent 
+
+- name: Install Starship.rs 
+  block:
+
+    - name: Download Starship installer
+      get_url:
+        url: "{{ starship_url }}"
+        dest: "{{ tmp_starship_script_path }}"
+        mode: '0755'
+        group: "{{ group }}"
+        owner: "{{ user }}"
+
+    - name: Run the install script
+      script: "{{ tmp_starship_script_path }} --yes"
+
+    - name: Remove the starship-installer.sh
+      file:
+        path: "{{ tmp_starship_script_path }}"
+        state: absent
+
+    - name: Add starship.toml configuration file to system
+      copy:
+        src: starship.toml 
+        dest: "{{ conf_path }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+
+- name: Add .bashrc configuration file to system
+  copy:
+    src: .bashrc 
+    dest: "{{ home }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"

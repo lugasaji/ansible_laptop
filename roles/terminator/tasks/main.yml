@@ -1,0 +1,28 @@
+---
+- name: Install Terminator
+  package:
+    name: terminator
+
+- name: Terminator background
+  block:
+    - name: Create background folder
+      file:
+        path: "{{ bg_terminator_path }}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        mode: "0755"
+    - name: Copy the background file 
+      copy:
+        src: bg.jpg
+        dest: "{{ bg_terminator_path}}"
+        owner: "{{ user }}"
+        group: "{{ group }}"
+        mode: "0444"
+
+- name: Terminator config file
+  template:
+    src: config.j2
+    dest: "{{ terminator_path_config}}/config"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: "0644"
