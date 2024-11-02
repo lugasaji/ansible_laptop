@@ -1,0 +1,7 @@
+---
+dependencies:
+  - role: appimage
+    application_name: scribus
+    application_url: https://sourceforge.net/projects/scribus/files/scribus/1.6.2/scribus-1.6.2-linux-x86_64.AppImage
+    application_icon_url: https://wiki.scribus.net/wiki/images/f/f1/Scribusicon-blue.png
+    create_launcher: True

@@ -33,3 +33,12 @@
         group: "{{ group }}"
         owner: "{{ user }}"
         mode: '0755'
+
+- name: Copy plugins to nvim
+  template: 
+    src: "{{ item }}" 
+    dest: "{{ nvim_plugins_directory }}/{{ item|replace(templates_src_path+'/', '')|replace('.j2', '.lua') }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: "0755"
+  with_items: "{{ lookup('pipe', 'find '+ templates_src_path +'/*.j2 -type f').split('\n') }}"

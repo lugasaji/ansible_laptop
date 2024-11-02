@@ -10,3 +10,28 @@ nvim_configuration_directories:
   - "{{ home }}/.local/share/nvim"
   - "{{ home }}/.local/state/nvim" 
   - "{{ home }}/.cache/nvim" 
+
+nvim_plugins_directory: "{{ nvim_configuration_directory }}/nvim/lua/plugins" 
+templates_src_path: "{{ role_path }}/templates/plugins"
+
+# Live Server Plugin
+live_server_port: 5555
+live_server_browser: firefox
+
+# Treesitter plugin 
+treesitter_languages:
+  - c 
+  - lua
+  - vim
+  - vimdoc
+  - query
+  - markdown
+  - markdown_inline
+  - python
+  - javascript
+  - html
+  - css
+  - dockerfile
+
+treesitter_ignore_languages:
+  - yaml

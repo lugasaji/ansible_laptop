@@ -1,0 +1,1 @@
+npm_local_directory: "{{ home }}/.local/"

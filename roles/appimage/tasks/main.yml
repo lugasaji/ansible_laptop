@@ -1,0 +1,40 @@
+---
+- name: Download AppImage
+  get_url:
+    url: "{{ application_url }}"
+    dest: "{{ bin_directory }}/{{ application_name }}"
+
+- name: AppImage Icon
+  block:
+    - name: Create icon directory
+      file:
+        path: "{{ icon_directory }}"
+        state: directory
+        mode: "0755"
+    - name: Download AppImage Icon
+      get_url:
+        url: "{{ application_icon_url }}"
+        dest: "{{ icon_directory }}"
+        mode: "0644"
+      register: downloaded_icon
+
+    - name: Change icon name file
+      copy:
+        src: "{{ downloaded_icon.dest }}"
+        dest: "{{ icon_directory }}/{{application_name }}.{{ downloaded_icon.dest.split('.') | last}}"
+      register: application_icon_path
+    
+    - name: Remove icon tmp file
+      file:
+        path: "{{ downloaded_icon.dest }}"
+        state: absent   
+  when: application_icon_url is defined
+  
+- name: Create Launcher
+  template:
+    src: desktop_template.j2
+    dest: "{{ launcher_directory }}/{{ application_name}}.desktop"
+    mode: "0755"
+  when: create_launcher == True
+
+

@@ -1,0 +1,8 @@
+---
+categories:
+  - Application
+description: Application
+bin_directory: "/usr/local/bin"
+launcher_directory: "/usr/share/applications"
+icon_directory: "/usr/share/icons/applications"
+create_launcher: False

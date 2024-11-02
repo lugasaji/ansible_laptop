@@ -1,7 +1,7 @@
 ---
 - name: Download Node script
   get_url:
-    url: https://deb.nodesource.com/setup_20.x
+    url: https://deb.nodesource.com/setup_23.x
     dest: /tmp/nodesource_setup.sh 
     mode: '0755'
 
@@ -18,3 +18,17 @@
   package:
     name: nodejs
     state: present
+
+- name: Configure npm
+  block:
+    - name: Configure npm user global directory
+      command: "npm config set prefix '{{ npm_local_directory }}'"
+      become_user: "{{ user }}"
+
+    - name: Create bin local directory
+      file:
+        path: "{{ npm_local_directory }}bin/"
+        group: "{{ group }}"
+        owner: "{{ user }}"
+        mode: "0755"
+        state: directory 

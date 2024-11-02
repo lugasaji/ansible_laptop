@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name={{ application_name }}
+Categories= {{ categories | join(";") }} 
+Comment={{ description }}
+Icon={{ application_icon_path.dest }}
+Exec={{ bin_directory }}/{{ application_name }}
+Terminal=false  
